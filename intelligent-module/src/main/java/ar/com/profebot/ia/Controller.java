@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @RequestMapping(method = RequestMethod.GET)
-    public EquationsResponse newEquationsSimilarTo() {
+    public EquationsResponse newEquationsSimilarTo() throws Exception {
         return GeneticAlgorithmExecutor.execute("3(x+1)", "3(x+1)+5", "=");
     }
 
     @RequestMapping(value = "/more/practice", method = RequestMethod.POST)
-    public String newEquationsSimilarTo(@RequestBody IAModuleParams params) {
+    public String newEquationsSimilarTo(@RequestBody IAModuleParams params) throws Exception {
         return GeneticAlgorithmExecutor.execute(params.getTerm(), params.getContext(), params.getRoot()).getEquations();
     }
 }
